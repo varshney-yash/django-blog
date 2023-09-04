@@ -25,12 +25,15 @@ SECRET_KEY = 'django-insecure-j%8by-#t2h_=(eqcm1qys)sh74&3@mkz&y&mcwyyw$e*e0q=*_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['localhost','127.0.0.1', '.vercel.app']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary',
+    'blog.apps.BlogConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -67,8 +70,8 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'personal_website.wsgi.application'
-WSGI_APPLICATION = 'personal_website.wsgi.app'
+WSGI_APPLICATION = 'personal_website.wsgi.application'
+# WSGI_APPLICATION = 'vercel_app.wsgi.app'
 
 
 # Database
@@ -120,12 +123,28 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+#   files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_URL = 'user-login'
+
+# cloudinary imports
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+ 
+cloudinary.config( 
+  cloud_name = "dgrckzaxa", 
+  api_key = "596468498745612", 
+  api_secret = "Rc4MD6MMwUFPQws4tZQranfleik" 
+)
