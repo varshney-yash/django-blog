@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="content-section">
+    <form method="POST" class="max-w-md mx-auto bg-white shadow-md rounded p-4">
+        {% csrf_token %}
+        <fieldset class="mb-4">
+            <legend class="border-b-2 border-gray-400 text-lg font-semibold mb-2">Share your thoughts.</legend>
+            {{ form.media }}
+            <div class="mb-4">
+                <label for="{{ form.title.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                {{ form.title }}
+            </div>
+            <div class="mb-4">
+                <label for="{{ form.content.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">Content</label>
+                {{ form.content }}
+            </div>
+        </fieldset>
+        <div class="mb-4">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800" type="submit">Post</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

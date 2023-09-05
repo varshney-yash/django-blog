@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1', '.vercel.app']
 # Application definition
 
 INSTALLED_APPS = [
+    'ckeditor',
+    'cloudinary',
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'django.contrib.admin',
@@ -115,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -135,3 +137,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_URL = 'user-login'
+
+# cloudinary imports
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+ 
+cloudinary.config( 
+  cloud_name = "dgrckzaxa", 
+  api_key = "596468498745612", 
+  api_secret = "Rc4MD6MMwUFPQws4tZQranfleik" 
+)
