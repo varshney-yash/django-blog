@@ -39,15 +39,24 @@
         </form>
 
         <!-- Profile Update Form -->
-        <form method="POST" id="profile-form" class="hidden" enctype="multipart/form">
+        <form method="POST" id="profile-form" class="hidden" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="mb-4">
+                <div>
+                    {% if user.profile.image.url %}
+                        <p class="text-gray-600"><a href="{{ user.profile.image.url }}" target="_blank" class="text-blue-500 hover:underline">Click here to view current profile photo</a></p>
+                    {% else %}
+                        <p class="text-gray-600">No profile photo uploaded</p>
+                    {% endif %}
+                </div>
                 <label for="{{ p_form.image.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">Profile Image</label>
                 {{ p_form.image }}
                 {% if p_form.image.errors %}
                     <p class="text-red-500 text-xs mt-1">{{ p_form.image.errors }}</p>
                 {% endif %}
             </div>
+
+            
 
             <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline-indigo active:bg-indigo-800" type="submit">
                 Update Profile Image
@@ -59,6 +68,17 @@
         document.getElementById('edit-profile').addEventListener('click', function () {
             document.getElementById('user-form').classList.toggle('hidden');
             document.getElementById('profile-form').classList.toggle('hidden');
+        });
+        const emailField = document.getElementById('{{ u_form.email.id_for_label }}');
+        emailField.addEventListener('change', function () {
+            if (emailField.value === '') {
+                // Prompt the user for confirmation
+                const confirmDelete = confirm('Are you sure you want to remove your email?');
+                if (!confirmDelete) {
+                    // Restore the previous email value
+                    emailField.value = '{{ user.email }}';
+                }
+            }
         });
     </script>
 </div>

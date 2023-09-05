@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-j%8by-#t2h_=(eqcm1qys)sh74&3@mkz&y&mcwyyw$e*e0q=*_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1', '.vercel.app']
 
@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1', '.vercel.app']
 # Application definition
 
 INSTALLED_APPS = [
+    'ckeditor',
     'cloudinary',
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
@@ -116,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
