@@ -57,8 +57,6 @@
                 {% endif %}
             </div>      
 
-            
-
             <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline-indigo active:bg-indigo-800" type="submit">
                 Update Profile Image
             </button>
@@ -90,17 +88,6 @@
             document.getElementById('user-form').classList.toggle('hidden');
             document.getElementById('profile-form').classList.toggle('hidden');
             document.getElementById('profile-bio-form').classList.toggle('hidden');
-        });
-        const emailField = document.getElementById('{{ u_form.email.id_for_label }}');
-        emailField.addEventListener('change', function () {
-            if (emailField.value === '') {
-                // Prompt the user for confirmation
-                const confirmDelete = confirm('Are you sure you want to remove your email?');
-                if (!confirmDelete) {
-                    // Restore the previous email value
-                    emailField.value = '{{ user.email }}';
-                }
-            }
         });
         const emailField = document.getElementById('{{ u_form.email.id_for_label }}');
         emailField.addEventListener('change', function () {
