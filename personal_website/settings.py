@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1', '.vercel.app']
 # Application definition
 
 INSTALLED_APPS = [
+    'ckeditor',
     'cloudinary',
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
@@ -70,8 +71,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'personal_website.wsgi.application'
-# WSGI_APPLICATION = 'vercel_app.wsgi.app'
+# WSGI_APPLICATION = 'personal_website.wsgi.application'
+WSGI_APPLICATION = 'vercel_app.wsgi.app'
 
 
 # Database
@@ -116,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

@@ -5,6 +5,7 @@ from cloudinary.models import CloudinaryField
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     image = CloudinaryField('image')
+    bio = models.TextField(default='Hi! I am writing on varshneyblogs',null=True)
 
     def __str__(self):
         return f'{self.user.username} Profile'
@@ -16,3 +17,4 @@ class Profile(models.Model):
             default_image_url = 'image/upload/v1693301786/samples/people/boy-snow-hoodie.jpg'  # Replace with your default image URL
             self.image = default_image_url
         super().save(*args, **kwargs)
+
